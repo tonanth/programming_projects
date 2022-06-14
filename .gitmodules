@@ -1,0 +1,3 @@
+[submodule "roblox-game-tracker/react-frontend"]
+	path = roblox-game-tracker/react-frontend
+	url = ./roblox-game-tracker/react-frontend/

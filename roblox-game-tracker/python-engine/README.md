@@ -13,6 +13,6 @@ following steps after installing \
 `sudo -u postgres createuser $user` where $user will run the program
 
 ## Python
-This program uses Python 3.9.7 in a virtualenv created by Pycharm.
-
+This program uses Python 3.9.7 in a virtualenv created by Pycharm. Interaction between Python and Postgres will be done
+using psycopg package. 
 
