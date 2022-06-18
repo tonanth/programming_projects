@@ -5,14 +5,14 @@
 
 from selenium.webdriver.common.by import By
 
-# Stores attribute its selector
+# Stores selector of an attribute
 attribute_selector_dict = {
     "name": '/html/body/div[5]/div[3]/div[2]/div[2]/div[3]/div[2]/div[1]/h1',
     "date-updated": '/html/body/div[5]/div[3]/div[2]/div[2]/div[4]/div/div[1]/div[1]/div[2]/ul/li[5]/p[2]',
     "description": '/html/body/div[5]/div[3]/div[2]/div[2]/div[4]/div/div[1]/div[1]/div[2]/pre'
 }
 
-# Stores attribute
+# Stores the corresponding selector type
 attribute_selector_type_dict = {
     "name": By.XPATH,
     "description": By.XPATH,
