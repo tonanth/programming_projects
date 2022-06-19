@@ -61,7 +61,7 @@ class CrawlerEngine:
         of attributes in the List corresponds to the position of the attributes present in attribute_table in the
         constructor.
         """
-        # TODO: implement retries
+        # TODO: implement retries and error handling
         self.driver.get(page_url)
         game_attributes = []
         for attribute in self.attribute_table:
@@ -74,4 +74,3 @@ class CrawlerEngine:
         """Closes the Selenium browser"""
         self.driver.close()
         return
-    
