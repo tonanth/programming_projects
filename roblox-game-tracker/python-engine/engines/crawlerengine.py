@@ -1,6 +1,6 @@
 from typing import List
 from selenium import webdriver
-from crawlerselector import attribute_selector_dict, attribute_selector_type_dict
+from engines.crawlerselector import attribute_selector_dict, attribute_selector_type_dict
 
 
 class CrawlerEngine:
