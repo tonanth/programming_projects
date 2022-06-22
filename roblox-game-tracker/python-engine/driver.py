@@ -1,36 +1,38 @@
-from engine import CrawlerEngine, SQLEngine
-from config import attribute_xpath_dict
-import time
-
-from typing import Tuple, List
-import time
-
-loop_infinitely = False  # Check games continuously instead of just a single pass
+from engines.crawlerengine import CrawlerEngine
+from engines.sqlengine import SQLEngine
+from typing import List
 
 
 class Driver:
     def __init__(self,
                  database_name: str,
                  table_name: str,
-                 url_key: str,
-                 attribute_selector_mapping: List[str],
-                 page_change_delay: int = 10):
+                 url_field: str,
+                 attribute_list: List[str],
+                 enable_test_game: bool = False):
+        self.game_urls = []
         self.database_name = database_name
         self.table_name = table_name
-        self.url_key = url_key
-        self.attribute_selector_mapping = attribute_selector_mapping
-        self.page_change_delay = page_change_delay
-        self.crawler = CrawlerEngine()
-        self.sql = SQLEngine(database_name)
+        self.url_field = url_field
+        self.attribute_list = attribute_list
+        # TODO: Temporary custom port enablement, remove when implement config file
+        self.crawler = CrawlerEngine(attribute_list, use_custom_port=True)
+        self.sql = SQLEngine(table_name, database_name)
+        self.finished = True
 
     # TODO finish implementing
     def get_test_game(self):
         self.driver.get('https://google.com')
         print('implement this')
 
-    def execute(self):
-        games = self.sql.get_table(f'SELECT {self.url_key} FROM {self.table_name}')
-        for
+    def iterate(self):
+        if not self.game_urls:
+            self.game_urls.extend(self.sql.read_col(self.url_field))
+        if self.game_urls:
+            game_url = self.game_urls.pop()
+            game_attr = self.crawler.get_attributes_from_url(game_url)
+            self.sql.update_row(self.attribute_list, game_attr, self.url_field, game_url)
+        return
 
     def close(self):
         self.crawler.close()
