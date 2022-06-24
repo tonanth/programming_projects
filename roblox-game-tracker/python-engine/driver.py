@@ -25,6 +25,7 @@ class Driver:
         self.driver.get('https://google.com')
         print('implement this')
 
+    # TODO: add error handling
     def iterate(self):
         if not self.game_urls:
             self.game_urls.extend(self.sql.read_col(self.url_field))
