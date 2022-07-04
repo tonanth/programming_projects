@@ -2,6 +2,7 @@ import { useState } from "react";
 
 interface Props {
   handleAddNewURL (data : string): null;
+  handleRefresh (): null
 }
 
 function TopBar(props : Props) {
@@ -14,6 +15,7 @@ function TopBar(props : Props) {
       <form onSubmit={() => props.handleAddNewURL(url)}>
           <input className="game-entry-box" type="text" placeholder="ROBLOX Game URL" onChange={(text) => {set_url(text.target.value);}} />
       </form>
+      <button className='refresh-button' type='button'>Refresh</button>
     </div>
   )
 }
