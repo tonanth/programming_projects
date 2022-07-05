@@ -27,7 +27,10 @@ function App() {
     handleRefresh()
     return null;
   }
-  
+  if(!serverStatus) 
+  return (
+    <h1>Cannot connect to server</h1>
+  )
   return (
     <div className="App">
       <h1>{serverStatus.toString()}</h1>
